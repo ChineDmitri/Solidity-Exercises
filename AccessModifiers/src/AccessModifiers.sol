@@ -2,8 +2,13 @@
 pragma solidity ^0.8.13;
 
 // You may modify this contract
+// -- public: visible externally and internally (creates a getter function for storage/state variables)
+// -- private: only visible in the current contract
+// -- external: only visible externally (only for functions) - i.e. can only be message-called (via this.func)
+// -- internal: only visible internally
+// -- DEFAULT: only visible external
 contract Parent {
-    uint256 private _value;
+    uint256 internal _value;
 }
 
 contract Child is Parent {
@@ -20,4 +25,5 @@ contract Child is Parent {
     function getValue() public view returns (uint256) {
         return _value;
     }
+
 }
